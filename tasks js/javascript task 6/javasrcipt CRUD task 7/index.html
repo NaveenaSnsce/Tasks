@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Student Info</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="table.js"></script>
+  </head>
+  <body>
+    <form class="form">
+        <h2>CLIENT</h2>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email"><br><br>
+      <button type="button" onclick="addStudent()">Save</button>
+    </form>
+    <br>
+    <table id="studentTable" border="4">
+   <h2>LIST OF CLIENT </h2>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </table>
+    <script>
+      var id = 1; // Start with id 1
+      
+      function addStudent() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var table = document.getElementById("studentTable");
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerHTML = name;
+        cell2.innerHTML = email;
+        cell3.innerHTML = "<button onclick='deleteRow(this.parentNode.parentNode)'>Delete</button>";
+      }
+
+      function deleteRow(row) {
+        row.parentNode.removeChild(row);
+      }
+    </script>
+  </body>
+</html>
